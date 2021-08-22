@@ -1,13 +1,37 @@
-#include "minitalk.h"
-// getpid
-// void (*signal (int signal, void (*sigfunc) (int func)))(int);
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   server.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/22 16:37:23 by lcharlet          #+#    #+#             */
+/*   Updated: 2021/08/22 17:34:24 by lcharlet         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void		print_pid(int getpid)
+#include "minitalk.h"
+
+void	print_pidd(int pid)
 {
-	printf("%d\n", getpid);
+	char *res;
+
+	printf("%d\n", 123);
+	printf("%d\n", pid);
+	res = ft_itoa(pid);
+	printf("%s", res);
 }
 
-void one(int signal)
+void	print_pid(int pid)
+{
+	char *res;
+
+	// res = ft_itoa(pid);
+	printf("%d", 123);
+	printf("%s", res);
+}
+
+void	one(int signal)
 {
 	static int	cnt;
 	static int	ch;
@@ -40,18 +64,12 @@ void one(int signal)
 	}
 }
 
-// void two(int b)
-// {
-// 	b = b;
-// 	write (1, "world\n", 6);
-// }
-
 int	main(void)
 {
-	int pid;
+	int	pid;
 
 	pid = getpid();
-	print_pid(pid);
+	print_pidd(pid);
 	signal(SIGUSR1, &one);
 	signal(SIGUSR2, &one);
 	while (1)
@@ -59,19 +77,3 @@ int	main(void)
 		pause();
 	}
 }
-
-
-
-//int sigemptyset(sigset_t *sig_m); - инициализация сигнала
-//sigset_t - тип данных для предоаствления набора сигналов
-// void (*signal (int signal, void (*sigfunc) (int func)))(int) - выполнить ф-ию на которую указывает sigfunc
-//int sigaddset(sigset_t *sig_m, int signr); добавить сигнал, signr - номер сигнала
-// int sigaction(int signum, const struct sigaction *act, struct sigaction *oldact); - используется для изменения действий процесса при полчении сигнала
-//sigaddset(&signal_set, SIGINT); - использование симвалического имени
-//int kill(pid_t pid, int sig); - посылает сигнал процессу или группе процесса
-//unsigned getpid(void) - посылает цифровой ид процесса
-//int pause(void) - ожидает сигнал. процесс останавливается, пока не получит сигнал
-//unsigned int sleep (unsigned int sec); - задержка в секундах. Приостанавливает рабботу потока, в котором она была вызвана
-//int usleep (useconds_t usec); - то же, что и sleep, но в микросекундах
-//exit - немедленное окончание работы программы
-// SIGUSR1 and SIGUSR2 - константы. исп для межпроцессной (межпоточной) синхронизации. эти сигналы по умолчанию завершают выполнение процесса
