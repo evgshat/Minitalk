@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_client.c                                        :+:      :+:    :+:   */
+/*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/22 16:37:33 by lcharlet          #+#    #+#             */
-/*   Updated: 2021/09/03 15:11:42 by lcharlet         ###   ########lyon.fr   */
+/*   Updated: 2021/09/03 16:26:49 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ void	send_message(int pid, char *message)
 	}
 }
 
+void	server_confirm(int signal)
+{
+	write (1, "Message sent successfully\n", 26);
+}
+
 int	main(int argc, char **argv)
 {
 	int	pid;
@@ -47,6 +52,7 @@ int	main(int argc, char **argv)
 		exit (1);
 	}
 	pid = ft_atoi(argv[1]);
+	signal(SIGUSR1, &server_confirm);
 	send_message(pid, argv[2]);
 	return (0);
 }
