@@ -4,7 +4,7 @@
 		"name": "(lldb) Launch",
 		"type": "cppdbg",
 		"request": "launch",
-		"program": "${workspaceFolder}/server.out",
+		"program": "${workspaceFolder}/try.out",
 		"args": [],
 		"stopAtEntry": false,
 		"cwd": "${fileDirname}",
