@@ -3,7 +3,7 @@ NAME_C  = client
 
 SRCS  = server.c
 SRCS_C  = client.c
-SRCS_S  = utils.c
+SRCS_U  = utils.c
 
 HEADER  = minitalk.h
 
@@ -15,16 +15,11 @@ FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME) $(NAME_C)
 
-$(NAME) : $(SRCS) $(SRCS_S)
-	$(CC) $(SRCS) $(SRCS_S) -o $(NAME)
+$(NAME) : $(SRCS) $(SRCS_U)
+	@$(CC) $(FLAGS) $(SRCS) $(SRCS_U) -o $(NAME)
 
-$(NAME_C) : $(SRCS_C) $(SRCS_S)
-	$(CC) $(SRCS_C) $(SRCS_S) -o $(NAME_C)
-
-bonus: $(NAME) $(NAME_C)
-
-%.o: %.c $(HEADER)
-	$(CC) $(FLAGS) -c $< -o $(<:.c=.o)
+$(NAME_C) : $(SRCS_C) $(SRCS_U)
+	@$(CC) $(FLAGS) $(SRCS_C) $(SRCS_U) -o $(NAME_C)
 
 clean:
 	$(RM) $(NAME) $(NAME_C)

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/22 16:37:23 by lcharlet          #+#    #+#             */
-/*   Updated: 2021/09/03 16:28:34 by lcharlet         ###   ########lyon.fr   */
+/*   Created: 2021/09/05 16:28:35 by lcharlet          #+#    #+#             */
+/*   Updated: 2021/09/05 16:31:51 by lcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,7 @@ void	handler(int signal)
 		if (ch != 0)
 			write(1, &ch, 1);
 		else
-		{
 			write(1, "\n", 1);
-			kill(pid, SIGUSR1);
-		}
 		cnt = 128;
 		ch = 0;
 		i = 0;
